@@ -17,5 +17,13 @@ pipeline {
         sh 'node --version'
       }
     }
+    stage ('Middle-ware') {
+      agent { 
+        docker { image 'busybox' }
+      }
+      steps {
+        sh ' sleep 1000 '
+      }
+    }
   }
 }
