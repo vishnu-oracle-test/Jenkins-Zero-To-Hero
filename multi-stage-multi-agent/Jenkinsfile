@@ -19,10 +19,18 @@ pipeline {
     }
     stage ('Middle-ware') {
       agent { 
-        docker { image 'busybox' }
+        docker { image 'busybox:latest' }
       }
       steps {
-        sh ' sleep 1000 '
+        sh 'sleep 1000'
+      }
+    }
+    stage ('DB') {
+      agent {
+        docker { image mysql:latest }
+      }
+      steps { 
+        sh 'select *'
       }
     }
   }
